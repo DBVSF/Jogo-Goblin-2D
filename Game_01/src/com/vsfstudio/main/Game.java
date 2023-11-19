@@ -33,7 +33,7 @@ public class Game extends Canvas implements Runnable, KeyListener {
 	private Player player;
 	
 	public List <Entity> entities;
-	public Spritesheet spritesheet;
+	public static Spritesheet spritesheet;
 	
 	private boolean isRunning = true;
 	
@@ -49,7 +49,7 @@ public class Game extends Canvas implements Runnable, KeyListener {
 		
 		spritesheet = new Spritesheet("/spritesheet.png");
 		
-		player = new Player(0,0,16,16,spritesheet.getSprite(0, 11, 16, 16));
+		player = new Player(0,0,16,16,spritesheet.getSprite(0, 0, 16, 16));
 		entities.add(player);
 		
 		
@@ -94,7 +94,7 @@ public class Game extends Canvas implements Runnable, KeyListener {
 	}
 	
 	public void tick () {
-		for(int i =0; i < entities.size(); i++) {
+		for(int i = 0; i < entities.size(); i++) {
 			Entity e = entities.get(i);
 			e.tick();
 		}
