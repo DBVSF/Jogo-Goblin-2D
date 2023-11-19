@@ -16,6 +16,8 @@ import javax.swing.JFrame;
 import com.vsfstudio.entities.Entity;
 import com.vsfstudio.entities.Player;
 import com.vsfstudio.graficos.Spritesheet;
+import com.vsfstudio.world.World;
+
 
 public class Game extends Canvas implements Runnable, KeyListener {
 
@@ -31,9 +33,13 @@ public class Game extends Canvas implements Runnable, KeyListener {
 	private final int SCALE = 4;
 	private BufferedImage image;
 	private Player player;
+	public static World world;
+	
 	
 	public List <Entity> entities;
 	public static Spritesheet spritesheet;
+	
+	
 	
 	private boolean isRunning = true;
 	
@@ -45,9 +51,13 @@ public class Game extends Canvas implements Runnable, KeyListener {
 		initFrame();
 		image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
 		
+	
+		
 		entities = new ArrayList<Entity>();
 		
 		spritesheet = new Spritesheet("/spritesheet.png");
+		
+		world = new World ("/map_0.png");
 		
 		player = new Player(0,0,16,16,spritesheet.getSprite(0, 0, 16, 16));
 		entities.add(player);
@@ -108,23 +118,32 @@ public class Game extends Canvas implements Runnable, KeyListener {
 			return;
 		}
 		
+		
+		
 		Graphics g = image.getGraphics();
 		g.setColor(new Color(0,0,0));
 		g.fillRect(0, 0, WIDTH, HEIGHT);
+		
+		world.render(g);
 		
 		for(int i =0; i < entities.size(); i++) {
 			Entity e = entities.get(i);
 			e.render(g);
 		}
+		
+		
+		
+		
 		g.dispose();
 		g = bs.getDrawGraphics();
 		g.drawImage(image, 0,0, WIDTH*SCALE, HEIGHT*SCALE,null);
 		bs.show();
 		
-		
+	
 		
 		
 	}
+	
 	
 	public void run() {
 		
