@@ -10,6 +10,7 @@ import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import javax.swing.JFrame;
 
@@ -17,6 +18,7 @@ import com.vsfstudio.entities.Enemy;
 import com.vsfstudio.entities.Entity;
 import com.vsfstudio.entities.Player;
 import com.vsfstudio.graficos.Spritesheet;
+import com.vsfstudio.graficos.UI;
 import com.vsfstudio.world.World;
 
 
@@ -40,8 +42,9 @@ public class Game extends Canvas implements Runnable, KeyListener {
 	public static List <Entity> entities;
 	public static List <Enemy> enemies;
 	public static Spritesheet spritesheet;
+	public static Random rand = new Random();
 	
-	
+	public UI ui;
 	
 	private boolean isRunning = true;
 	
@@ -52,6 +55,8 @@ public class Game extends Canvas implements Runnable, KeyListener {
 		setPreferredSize(new Dimension(WIDTH*SCALE,HEIGHT*SCALE));
 		initFrame();
 		
+		
+		ui = new UI();
 		image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);				
 		entities = new ArrayList<Entity>();
 		enemies = new ArrayList<Enemy>();		
@@ -131,7 +136,7 @@ public class Game extends Canvas implements Runnable, KeyListener {
 			e.render(g);
 		}
 		
-		
+		ui.render(g);
 		
 		
 		g.dispose();

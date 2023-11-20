@@ -38,6 +38,10 @@ public class Enemy extends Entity{
 	
 	public void tick () {
 		
+		
+		if(isColiddingWithPlayer() == false) {
+			
+		
 		if(new Random().nextInt(100) < 50) {
 			if((int) x < p.getX() && World.isFree((int)(x+speed), this.getY()) && !isColidding((int)(x+speed), this.getY())) {
 				
@@ -65,11 +69,28 @@ public class Enemy extends Entity{
 				if(index > maxIndex) 
 					index = 0 ;
 		}		
-		
+		}else {
+			//dano
+			if(Game.rand.nextInt(100)<00.00000000000000000001) {
+				Game.player.life--;
+				System.out.println(Game.player.life);				
+			}if(Game.player.life <= 0) {
+				//morrey
+			}
+			
+			
+		}
 		
 	}
 	
 
+	public boolean isColiddingWithPlayer() {
+		Rectangle enemyCurrent = new Rectangle(this.getX(),this.getY(),World.TILE_SIZE,World.TILE_SIZE);
+		Rectangle player = new Rectangle(Game.player.getX(),Game.player.getY(),World.TILE_SIZE, World.TILE_SIZE); 
+		
+		return enemyCurrent.intersects(player);
+	}
+	
 	public boolean isColidding (int xNext, int yNext) {
 		Rectangle enemyCurrent = new Rectangle(xNext,yNext,World.TILE_SIZE,World.TILE_SIZE);{
 			
@@ -82,8 +103,9 @@ public class Enemy extends Entity{
 					return true;
 				}
 			}
+			return false;
 		}
-		return false;
+		
 	}
 	
 	public void render(Graphics g) {
