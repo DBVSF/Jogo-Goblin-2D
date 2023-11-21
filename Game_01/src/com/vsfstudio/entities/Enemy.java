@@ -73,6 +73,7 @@ public class Enemy extends Entity{
 			//dano
 			if(Game.rand.nextInt(100)<00.00000000000000000001) {
 				Game.player.life--;
+				Game.player.isDemage = true;
 				System.out.println(Game.player.life);				
 			}if(Game.player.life <= 0) {
 				//morrey

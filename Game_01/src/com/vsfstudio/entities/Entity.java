@@ -12,9 +12,15 @@ public class Entity {
 
 				
 	public static BufferedImage LIFEPACK_EN = Game.spritesheet.getSprite(299, 185, 16, 16);
-	public static BufferedImage WEAPON_EN = Game.spritesheet.getSprite(10, 154, 16, 16);
+	public static BufferedImage WEAPON_EN = Game.spritesheet.getSprite(64, 0, 16, 16);
 	public static BufferedImage AMMO_EN = Game.spritesheet.getSprite(129, 185, 8, 16);
 	public static BufferedImage ENEMY_EN = Game.spritesheet.getSprite(0, 208, 16, 16);
+	public static BufferedImage SWORD_LEFT = Game.spritesheet.getSprite(96, 0, 16, 16);
+	public static BufferedImage SWORD_RIGHT = Game.spritesheet.getSprite(80, 0, 16, 16);
+   public static BufferedImage SWORD_DOWN = Game.spritesheet.getSprite(120, 0, 8, 16);
+   public static BufferedImage SWORD_UP = Game.spritesheet.getSprite(112, 0, 8, 16);
+	
+	
 	
 	
 	protected double x;
