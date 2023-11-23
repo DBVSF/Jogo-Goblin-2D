@@ -41,7 +41,22 @@ public class World {
 					if (pixelAtual == 0xFF000000) {
 						//chao
 						tiles[xx + (yy * WIDTH)] = new FloorTile(xx*16, yy*16, Tile.TILE_FLOOR);
-					}else if (pixelAtual == 0xFFffffff) {
+					}
+					if (pixelAtual == 0xFF151315) {
+						//chao
+						tiles[xx + (yy * WIDTH)] = new FloorTile(xx*16, yy*16, Tile.TILE_FLOOR1);
+					}
+					if (pixelAtual == 0xFF19161a) {
+						//chao
+						tiles[xx + (yy * WIDTH)] = new FloorTile(xx*16, yy*16, Tile.TILE_FLOOR2);
+					}
+					if (pixelAtual == 0xFF242025) {
+						//chao
+						tiles[xx + (yy * WIDTH)] = new FloorTile(xx*16, yy*16, Tile.TILE_FLOOR3);
+					}
+					
+					
+					else if (pixelAtual == 0xFFffffff) {
 						//parede
 						tiles[xx + (yy * WIDTH)] = new WallTile(xx*16, yy*16, Tile.TILE_WALL);
 						

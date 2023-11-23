@@ -1,6 +1,5 @@
 package com.vsfstudio.entities;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
@@ -17,10 +16,12 @@ public class Entity {
 	public static BufferedImage ENEMY_EN = Game.spritesheet.getSprite(0, 208, 16, 16);
 	public static BufferedImage SWORD_LEFT = Game.spritesheet.getSprite(96, 0, 16, 16);
 	public static BufferedImage SWORD_RIGHT = Game.spritesheet.getSprite(80, 0, 16, 16);
-   public static BufferedImage SWORD_DOWN = Game.spritesheet.getSprite(120, 0, 8, 16);
-   public static BufferedImage SWORD_UP = Game.spritesheet.getSprite(112, 0, 8, 16);
-	
-	
+	public static BufferedImage SWORD_DOWN = Game.spritesheet.getSprite(120, 0, 8, 16);
+	public static BufferedImage SWORD_UP = Game.spritesheet.getSprite(112, 0, 8, 16);
+	public static BufferedImage BULLETSHOOT_LEFT = Game.spritesheet.getSprite(257, 154, 16, 16);
+	public static BufferedImage BULLETSHOOT_RIGHT = Game.spritesheet.getSprite(273, 154, 16, 16);
+	public static BufferedImage BULLETSHOOT_UP = Game.spritesheet.getSprite(205, 154, 16, 16);
+	public static BufferedImage BULLETSHOOT_DOWN = Game.spritesheet.getSprite(205, 169, 16, 16);
 	
 	
 	protected double x;

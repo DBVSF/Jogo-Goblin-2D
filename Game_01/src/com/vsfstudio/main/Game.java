@@ -15,6 +15,7 @@ import java.util.Random;
 
 import javax.swing.JFrame;
 
+import com.vsfstudio.entities.BulletShoot;
 import com.vsfstudio.entities.Enemy;
 import com.vsfstudio.entities.Entity;
 import com.vsfstudio.entities.Player;
@@ -41,6 +42,7 @@ public class Game extends Canvas implements Runnable, KeyListener {
 	
 	
 	public static List <Entity> entities;
+	public static List <BulletShoot> bullets;
 	public static List <Enemy> enemies;
 	public static Spritesheet spritesheet;
 	public static Random rand = new Random();
@@ -61,6 +63,7 @@ public class Game extends Canvas implements Runnable, KeyListener {
 		image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);				
 		entities = new ArrayList<Entity>();
 		enemies = new ArrayList<Enemy>();		
+		bullets = new ArrayList<BulletShoot>();
 		spritesheet = new Spritesheet("/spritesheet.png");
 		player = new Player(0,0,16,16,spritesheet.getSprite(0, 0, 16, 16));
 		entities.add(player);
@@ -114,7 +117,16 @@ public class Game extends Canvas implements Runnable, KeyListener {
 			Entity e = entities.get(i);
 			e.tick();
 		}
+		
+		
+		for (int i = 0; i < bullets.size(); i++) {
+			bullets.get(i).tick();
+		}
+		
 	}
+	
+	
+	
 	
 	public void render () {
 		
@@ -136,6 +148,10 @@ public class Game extends Canvas implements Runnable, KeyListener {
 			Entity e = entities.get(i);
 			e.render(g);
 		}
+		for (int i = 0; i < bullets.size(); i++) {
+			bullets.get(i).render(g);
+		}
+		
 		
 		ui.render(g);
 		
@@ -206,6 +222,9 @@ public class Game extends Canvas implements Runnable, KeyListener {
 			}
 			else if (e.getKeyCode() == KeyEvent.VK_DOWN || e.getKeyCode() == KeyEvent.VK_S) {
 				player.down = true;
+			}
+			if (e.getKeyCode() == KeyEvent.VK_X){
+				player.shoot=true;
 			}
 		
 	}

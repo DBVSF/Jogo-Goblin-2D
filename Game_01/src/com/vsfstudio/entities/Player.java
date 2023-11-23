@@ -12,7 +12,7 @@ import com.vsfstudio.world.World;
 public class Player extends Entity {
 	
 	public boolean right,left,up,down;
-	public double speed = 0.03;
+	public double speed = 0.02;
 	public int right_dir = 0, left_dir = 1;
 	public int dir = right_dir; 
 	public int up_dir = 2, down_dir = 3;
@@ -31,6 +31,7 @@ public class Player extends Entity {
 	private BufferedImage playerDemage;
 	
 	public boolean isDemage = false;
+	public boolean shoot = false;
 	private int frameDemage = 0; 
 	
 	private boolean hasGun = false;
@@ -129,6 +130,36 @@ public class Player extends Entity {
 			}
 		}
 		
+		if(shoot ) {
+			ammo--;
+			shoot = false;
+			if(hasGun && ammo > 0 ) {
+				int dx = 0;	
+				int dy = 0;
+				if (dir == right_dir) {
+					dx = 1;		
+					BulletShoot bullet = new BulletShoot(this.getX(), this.getY(),3,3,BulletShoot.BULLETSHOOT_RIGHT ,dx ,0); 
+					Game.bullets.add(bullet);
+				} else if (dir == left_dir){
+					dx = -1;
+					BulletShoot bullet = new BulletShoot(this.getX(), this.getY(),3,3,BulletShoot.BULLETSHOOT_LEFT ,dx ,0); 
+					Game.bullets.add(bullet);
+				} if (dir == up_dir) {
+					dy= 1;
+					BulletShoot bullet = new BulletShoot(this.getX(), this.getY(),3,3,BulletShoot.BULLETSHOOT_UP ,0 ,dy); 
+					Game.bullets.add(bullet);
+				} else if (dir == down_dir) {
+					dy = -1;
+					BulletShoot bullet = new BulletShoot(this.getX(), this.getY(),3,3,BulletShoot.BULLETSHOOT_DOWN ,0 ,dy); 
+					Game.bullets.add(bullet);
+				}
+				
+				
+			
+			}
+			
+		}
+		
 		if (life <= 0 ) {
 			Game.enemies.clear();
 			Game.entities.clear();
@@ -207,8 +238,7 @@ public class Player extends Entity {
 	public void render(Graphics g) {
 		
 		if (!isDemage) {
-			
-		
+				
 		if (dir == right_dir) {
 			
 			g.drawImage(rightPlayer[index], this.getX() - Camera.x, this.getY() - Camera.y, null);
