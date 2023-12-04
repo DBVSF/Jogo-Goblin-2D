@@ -133,7 +133,7 @@ public class Player extends Entity {
 		if(shoot ) {
 			ammo--;
 			shoot = false;
-			if(hasGun && ammo > 0 ) {
+			if(hasGun && ammo >= 0 ) {
 				int dx = 0;	
 				int dy = 0;
 				if (dir == right_dir) {
